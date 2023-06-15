@@ -1,0 +1,35 @@
+﻿<Window x:Class="Header_EXAM.Income_and_expenses"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Header_EXAM"
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="Income_and_expenses" Height="450" Width="600" FontSize="18" MinWidth="600">
+    <DockPanel>
+        <Button DockPanel.Dock="Bottom" Content="Сохранить данные" Click="Button_Click_SAVE"/>
+        <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Дата">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Date_change, StringFormat=dd.MM.yyyy}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding Date_change}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Изменение баланса" Binding="{Binding Balance}" />
+                <DataGridTextColumn Header="Причина" Binding="{Binding Cause}" />
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+    </DockPanel>
+    
+</Window>

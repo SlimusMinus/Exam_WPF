@@ -1,0 +1,69 @@
+﻿<Window x:Class="Header_EXAM.Info_grafic"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Header_EXAM"
+
+        mc:Ignorable="d"
+        Title="Инфографика" Height="490" Width="535" FontSize="18" MinWidth="535" MinHeight="490">
+    <DockPanel >
+        <TabControl Background="AliceBlue">
+            <TabItem Header="Столбчатая диаграма" >
+                <DockPanel x:Name="Grid_all">
+                    <Button Background="#FFC5F302" Grid.Row="2" FontSize="22" DockPanel.Dock="Bottom" Click="Button_Click">OK</Button>
+                    <Viewbox DockPanel.Dock="Bottom">
+                        <Canvas  Width="371" Height="25">
+                            <Label Content="Ноя 2022" Canvas.Bottom="0" Canvas.Left="107" FontSize="10" ></Label>
+                            <Label Content="Дек 2022" Canvas.Bottom="0" Canvas.Left="170" FontSize="10"></Label>
+                            <Label Content="Янв 2023" Canvas.Bottom="0" Canvas.Left="225" FontSize="10"></Label>
+                        </Canvas>
+                    </Viewbox>
+                    <Viewbox  Width="auto" Height="auto">
+                        <Canvas Width="371" Height="350">
+                            <Rectangle  Width="40" Height="330" Canvas.Bottom="0" Canvas.Left="75" Fill="Red" x:Name="rect_november2022"></Rectangle>
+                            <Rectangle  Width="40" Height="270" Canvas.Bottom="0" Canvas.Left="175" Fill="Green" x:Name="rect_december2022"></Rectangle>
+                            <Rectangle  Width="40" Height="230" Canvas.Bottom="0" Canvas.Left="275" Fill="Blue" x:Name="rect_jan2023"></Rectangle>
+                        </Canvas>
+                    </Viewbox>
+                </DockPanel>
+            </TabItem >
+            <TabItem Header="Круговая диаграма" Background="AliceBlue" x:Name="Tabitem_rect">
+                <DockPanel>
+                    <Button DockPanel.Dock="Bottom" Content="OK" Click="Button_Click"/>
+                    <Canvas>
+                    <Ellipse Fill="Red" Width="300" Height="300" Margin="130, 70" Stroke="Black" StrokeThickness ="3" />
+                    <Path Stroke="Black"  StrokeThickness="3" Fill="Blue" Data=
+                          "M 137,200
+                          L 280, 220
+                          L 220, 82
+                          C 150,100 120,210 135,200
+                          Z"/>
+                    <Path Stroke="Black"  StrokeThickness="3" Fill="Green" Data=
+                          "M 428,220
+                          L 280,220
+                          L 220, 82
+                          C 220, 80 410,25 430,220
+                          Z"/>
+                    <Label Content="Ноя 2022" FontSize="16" FontWeight="Bold" Margin="250" />
+                    <Label Content="Дек 2023" FontSize="16" FontWeight="Bold" Margin="280, 150"/>
+                    <Label Content="Янв 2023" FontSize="16" FontWeight="Bold" Margin="150"/>
+                </Canvas>
+                </DockPanel>
+            </TabItem >
+            <TabItem Header="Сводная таблица" Background="AliceBlue">
+                <DockPanel>
+                    <Button DockPanel.Dock="Bottom" Content="OK" Click="Button_Click"/>
+                    <DataGrid Name="Table_grid" AutoGenerateColumns="False" Background="AliceBlue" ItemsSource="{Binding}" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Месяц" Binding="{Binding Month}"/>
+                            <DataGridTextColumn Header="2021"  Binding="{Binding Money_2021}"/>
+                            <DataGridTextColumn Header="2022"  Binding="{Binding Money_2022}"/>
+                            <DataGridTextColumn Header="2023" Binding="{Binding Money_2023}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>
